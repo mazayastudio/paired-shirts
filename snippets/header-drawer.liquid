@@ -19,6 +19,7 @@
     <div id="menu-drawer" class="gradient menu-drawer motion-reduce color-{{ section.settings.menu_color_scheme }}">
       <div class="menu-drawer__inner-container">
         <div class="menu-drawer__navigation-container">
+          <img src="{{ 'Header.png' | asset_url }}" alt="header" class="w-100">
           <nav class="menu-drawer__navigation">
             <ul class="menu-drawer__menu has-submenu list-menu" role="list">
               {%- for link in section.settings.menu.links -%}
@@ -111,17 +112,60 @@
                     <a
                       id="HeaderDrawer-{{ link.handle }}"
                       href="{{ link.url }}"
-                      class="menu-drawer__menu-item list-menu__item link link--text focus-inset{% if link.current %} menu-drawer__menu-item--active{% endif %}"
+                      class="menu-drawer__menu-item list-menu__item link link--text focus-inset{% if link.current %} menu-drawer__menu-item--active{% endif %} d-flex align-items-center justify-content-between border-bottom"
                       {% if link.current %}
                         aria-current="page"
                       {% endif %}
                     >
-                      {{ link.title | escape }}
+                      <div class="navlink">
+                        <img 
+                          src="{{ link.object.image.src | img_url: 'medium' }}" 
+                          alt="{{ link.object.image.alt | escape }}"
+                          class="border border-light-subtle p-1 rounded-1 me-3"
+                        />
+                        {{ link.title | escape }}
+                      </div>
+                      <img src="{{ 'arrow.png' | asset_url }}" alt="Arrow">
                     </a>
                   {%- endif -%}
                 </li>
               {%- endfor -%}
             </ul>
+            <div class="d-flex justify-content-between grid gap-3 p-5">
+              <div class="p-2 col-5">
+                <a href="#" class="link">FAQs</a>
+              </div>
+              <div class="p-2 col-5 text-end">
+                <a href="#" class="link">Contact Us</a>
+              </div>
+              <div class="p-2 col-5">
+                <a href="#" class="link">Track Your Order</a>
+              </div>
+              <div class="p-2 col-5 text-end">
+                <a href="#" class="link">Resize Straps</a>
+              </div>
+            </div>
+            <div class="d-flex flex-nowrap grid column-gap-3 mb-5">
+              <div class="p-2 w-100 flex-fill d-flex flex-column align-items-center text-center" style="background: rgba(155, 132, 109, 0.08);">
+                  <img src="{{ 'fits.png' | asset_url }}" alt="fits" width="32" height="32">
+                  <p class="text-body mb-0">Fits all Apple Watch models</p>
+              </div>
+              <div class="p-2 w-100 flex-fill d-flex flex-column align-items-center text-center" style="background: rgba(155, 132, 109, 0.08);">
+                  <img src="{{ 'money.png' | asset_url }}" alt="money" width="32" height="32">
+                  <p class="text-body mb-0">Money-Back Guarantee</p>
+              </div>
+              <div class="p-2 w-100 flex-fill d-flex flex-column align-items-center text-center" style="background: rgba(155, 132, 109, 0.08);">
+                  <img src="{{ 'star.png' | asset_url }}" alt="star" width="32" height="32">
+                  <p class="text-body mb-0">+30,000 Happy Customers</p>
+              </div>
+            </div>
+            
+            <div class="row d-flex align-items-center justify-content-center mx-5">
+                <a href="#" class="col-12 pt-4 button button--primary d-block mx-auto text-center">
+                    SHOP ALL PRODUCTS
+                </a>
+            </div>
+            <p class="text-center mt-3">FREE SHIPPING ON ORDERS +$45.00</p>
           </nav>
           <div class="menu-drawer__utility-links">
             {%- if shop.customer_accounts_enabled -%}

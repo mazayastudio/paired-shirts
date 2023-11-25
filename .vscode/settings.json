@@ -6,7 +6,10 @@
   "[css]": {
     "editor.formatOnSave": true
   },
-  "[liquid]": {
-    "editor.formatOnSave": true
-  }
+    "[liquid]": {
+      "editor.formatOnSave": false
+    },
+    "themeCheck.checkOnSave": false,
+    "eslint.codeActionsOnSave.mode": "problems"
+  
 }
